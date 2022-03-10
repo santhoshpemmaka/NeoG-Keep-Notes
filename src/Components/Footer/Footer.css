@@ -1,0 +1,30 @@
+.footer-container {
+	
+}
+footer {
+	background-color: #eaeaec;
+	width: 100%;
+	font-size: 1.6rem;
+	padding: 2.5rem;
+	color: #535766;
+	font-weight: 500;
+}
+.footer-name {
+	text-align: center;
+	margin-bottom: 1rem;
+}
+.ul-tag-footer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: 2rem 0;
+	list-style: none;
+}
+.footer-icon {
+	font-size: 2.5rem;
+	margin-right: 1rem;
+	width: 2rem;
+	height: 2rem;
+	margin: 0 1.5rem;
+	color: black;
+}

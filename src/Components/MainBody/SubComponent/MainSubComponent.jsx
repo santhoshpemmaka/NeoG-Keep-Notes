@@ -12,7 +12,6 @@ const MainSubComponent = () => {
 			  filterNotes.length > 0 &&
 			  state.sortBy != null &&
 			  filterNotes.filter((item) => item.tag === state.sortBy);
-	console.log(StickyNotes);
 	return (
 		<div className='container-note'>
 			{StickyNotes && StickyNotes.length > 0 && <h3>Activities</h3>}
