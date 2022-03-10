@@ -1,0 +1,8 @@
+.header-container{
+    margin: 2rem 3rem;
+    padding: 1rem;
+}
+.header-name{
+    font-size: 2.2rem;
+    color: var(--primary-color);
+}

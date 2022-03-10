@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css";
+:root {
+	font-size: 62.5%;
+	--primary-color: #ff3f6c;
+	--dark-primary-color: #e63961;
+	--complimentary-text-color: white;
+	--primary-text-color: #3e4152;
+	--secondary-text-color: #696b79;
+	--border-color: #e6e6e6;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
+}
