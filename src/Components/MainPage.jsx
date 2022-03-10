@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header/Header";
 import NavBar from "./NavBar/NavBar";
 import MainBody from "./MainBody/MainBody";
+import Footer from "./Footer/Footer";
 import "./MainPage.css";
 const MainPage = () => {
 	return (
@@ -11,6 +12,7 @@ const MainPage = () => {
 				<NavBar />
 				<MainBody />
 			</div>
+			<Footer />
 		</div>
 	);
 };
