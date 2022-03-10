@@ -5,29 +5,47 @@ import {useNote} from "../NoteContext/NoteContext";
 import uuid from "react-uuid";
 const MainBody = () => {
 	const {state, dispatch} = useNote();
-	const navCategory = state.category.slice(1, 5);
+	const navCategory = state.category.slice(2, 6);
 	const [keepNote, setkeepNote] = useState({
 		id: "",
 		title: "",
 		description: "",
 		tag: "",
+		pinned: false,
 	});
 	const btnHandler = () => {
 		dispatch({type: "ADD_NOTE", payload: {...keepNote, id: uuid()}});
-		setkeepNote((prev) => ({title: "", description: "", tag: ""}));
+		setkeepNote((prev) => ({
+			title: "",
+			description: "",
+			tag: "",
+			pinned: false,
+		}));
 	};
 	return (
 		<div className='container'>
 			<div className='main-container'>
 				<div className='input-tags'>
-					<input
-						type='text'
-						placeholder='Title'
-						value={keepNote.title}
-						onChange={(e) =>
-							setkeepNote((prev) => ({...prev, title: e.target.value}))
-						}
-					/>
+					<div className='input-tag-container'>
+						<input
+							className='input-tag-title'
+							type='text'
+							placeholder='Title'
+							value={keepNote.title}
+							onChange={(e) =>
+								setkeepNote((prev) => ({...prev, title: e.target.value}))
+							}
+						/>
+						<i
+							className='fas fa-thumbtack thumbtack-icon'
+							style={{
+								color: `${keepNote.pinned ? "#202135" : "#0000008a"}`,
+							}}
+							onClick={() =>
+								setkeepNote((prev) => ({...prev, pinned: !prev.pinned}))
+							}></i>
+					</div>
+
 					<input
 						type='text'
 						value={keepNote.description}
@@ -48,7 +66,7 @@ const MainBody = () => {
 										name='tag'
 										value={name}
 										id={name}
-										checked={keepNote.tag == name ? true : false}
+										checked={keepNote.tag === name ? true : false}
 										onChange={(e) =>
 											setkeepNote((prev) => ({...prev, tag: e.target.value}))
 										}

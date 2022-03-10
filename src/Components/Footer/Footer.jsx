@@ -28,7 +28,7 @@ const Footer = () => {
 						{footerItems &&
 							footerItems.length > 0 &&
 							footerItems.map((footer_item) => (
-								<li>
+								<li key={footer_item.link_name}>
 									<a
 										className='a-tag-header'
 										href={footer_item.link_name}

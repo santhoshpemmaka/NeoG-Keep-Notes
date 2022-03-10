@@ -12,6 +12,10 @@
     display: flex;
     flex-wrap: wrap;
 }
+.item-note-title{
+    display: flex;
+    justify-content: space-between;
+}
 .item-note{
     padding: 1rem;
     border-radius: 0.5rem;

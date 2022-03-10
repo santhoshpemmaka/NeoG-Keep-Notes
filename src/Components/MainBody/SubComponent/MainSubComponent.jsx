@@ -11,7 +11,9 @@ const MainSubComponent = () => {
 			: filterNotes &&
 			  filterNotes.length > 0 &&
 			  state.sortBy != null &&
-			  filterNotes.filter((item) => item.tag === state.sortBy);
+			  state.sortBy === "Pinned"
+			? filterNotes.filter((item) => item.pinned === true)
+			: filterNotes.filter((item) => item.tag === state.sortBy);
 	return (
 		<div className='container-note'>
 			{StickyNotes && StickyNotes.length > 0 && <h3>Activities</h3>}
@@ -19,8 +21,17 @@ const MainSubComponent = () => {
 				{StickyNotes &&
 					StickyNotes.length > 0 &&
 					StickyNotes.map((note) => (
-						<div className='item-note'>
-							<label className='item-title'>{note.title}</label>
+						<div key={note.id} className='item-note'>
+							<div className='item-note-title'>
+								<label className='item-title'>{note.title}</label>
+								<i
+									className='fas fa-thumbtack thumbtack-icon'
+									style={{
+										color: `${note.pinned ? "#202135" : "#0000008a"}`,
+										marginRight: "1rem",
+									}}></i>
+							</div>
+
 							<label className='item-descr'>{note.description}</label>
 							<div className='item-actions'>
 								<label className='item-tag'>{note.tag}</label>

@@ -16,11 +16,28 @@
     flex-direction: column;
     margin: 1.5rem 0;
 }
+.input-tag-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .input-tags input{
     padding: 1rem;
     font-size: 1.6rem;
     border: none;
     outline: none;
+}
+.input-tag-title{
+    width: 90%;
+}
+.thumbtack-icon{
+    font-size: 2rem;
+    margin-right: 3rem;
+    color: #0000008a;
+    cursor: pointer;
+}
+.thumbtack-icon:hover{
+    color: #202135 !important;
 }
 .nav-category{
     display: flex;

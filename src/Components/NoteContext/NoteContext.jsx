@@ -32,6 +32,9 @@ const NoteProvider = ({children}) => {
 				name: "All",
 			},
 			{
+				name: "Pinned",
+			},
+			{
 				name: "Work",
 			},
 			{
@@ -42,6 +45,7 @@ const NoteProvider = ({children}) => {
 			},
 		],
 		sortBy: null,
+		Pinned: false,
 	});
 
 	return (
