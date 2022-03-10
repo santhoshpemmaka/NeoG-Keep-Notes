@@ -6,7 +6,7 @@ import Footer from "./Footer/Footer";
 import "./MainPage.css";
 const MainPage = () => {
 	return (
-		<div>
+		<div className='body-component'>
 			<Header />
 			<div className='container-body'>
 				<NavBar />
