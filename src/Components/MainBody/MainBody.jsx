@@ -15,12 +15,12 @@ const MainBody = () => {
 	});
 	const btnHandler = () => {
 		dispatch({type: "ADD_NOTE", payload: {...keepNote, id: uuid()}});
-		setkeepNote((prev) => ({
+		setkeepNote({
 			title: "",
 			description: "",
 			tag: "",
 			pinned: false,
-		}));
+		});
 	};
 	return (
 		<div className='container'>
