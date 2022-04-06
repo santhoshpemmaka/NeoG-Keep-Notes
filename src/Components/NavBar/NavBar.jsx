@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useNote} from "../NoteContext/NoteContext";
+import {useNote} from "../../NoteContext/NoteContext";
 import "./NavBar.css";
 const NavBar = () => {
 	const [navTag, setnavTag] = useState("");

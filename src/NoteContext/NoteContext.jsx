@@ -6,14 +6,9 @@ const NoteProvider = ({children}) => {
 	const useReducerFun = (state, action) => {
 		switch (action.type) {
 			case "ADD_NOTE":
-				return {...state, notes: [...state.notes, action.payload]};
+				return {...state, notes: action.payload};
 			case "REMOVE_NOTE": {
-				const new_state = state.notes;
-				const new_note =
-					new_state &&
-					new_state.length > 0 &&
-					new_state.filter((item_note) => item_note.id !== action.payload.id);
-				return {...state, notes: new_note};
+				return {...state, notes: action.payload};
 			}
 			case "ADD_TAG": {
 				return {...state, category: [...state.category, action.payload]};
@@ -21,18 +16,34 @@ const NoteProvider = ({children}) => {
 			case "SORT_TAG": {
 				return {...state, sortBy: action.payload};
 			}
+			case "DELETE_NOTE": {
+				return {...state, deleteNotes: [...state.deleteNotes, action.payload]};
+			}
+			case "ADD_ARCHIVE":
+				return {
+					...state,
+					archiveNotes: action.payload,
+				};
 			default:
 				return state;
 		}
 	};
 	const [state, dispatch] = useReducer(useReducerFun, {
 		notes: [],
+		deleteNotes: [],
+		archiveNotes: [],
 		category: [
 			{
 				name: "All",
 			},
 			{
 				name: "Pinned",
+			},
+			{
+				name: "Trash",
+			},
+			{
+				name: "Archive",
 			},
 			{
 				name: "Work",

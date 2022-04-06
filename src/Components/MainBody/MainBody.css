@@ -56,8 +56,8 @@
     padding-right: 3rem;
     
 }
-.nav-category-item label{
-    margin-left: 0.5rem;
+.nav-category-item input{
+    margin-right: 0.5rem;
 }
 .nav-add-button{
     width: 10rem;

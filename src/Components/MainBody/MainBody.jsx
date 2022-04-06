@@ -1,24 +1,31 @@
 import React, {useState} from "react";
 import MainSubComponent from "./SubComponent/MainSubComponent";
 import "./MainBody.css";
-import {useNote} from "../NoteContext/NoteContext";
-import uuid from "react-uuid";
+import {useNote} from "../../NoteContext/NoteContext";
+import {v4 as uuid} from "uuid";
+import {addNoteToServer} from "../../utils/server-request";
 const MainBody = () => {
 	const {state, dispatch} = useNote();
-	const navCategory = state.category.slice(2, 6);
+	const navCategory = state.category.slice(4, 8);
 	const [keepNote, setkeepNote] = useState({
-		id: "",
+		_id: "",
 		title: "",
 		description: "",
-		tag: "",
+		tags: "",
 		pinned: false,
+		date: "",
 	});
+	const token = JSON.parse(localStorage.getItem("token"));
 	const btnHandler = () => {
-		dispatch({type: "ADD_NOTE", payload: {...keepNote, id: uuid()}});
+		addNoteToServer(
+			dispatch,
+			{...keepNote, _id: uuid(), date: new Date().toLocaleDateString()},
+			token
+		);
 		setkeepNote({
 			title: "",
 			description: "",
-			tag: "",
+			tags: "",
 			pinned: false,
 		});
 	};
@@ -61,18 +68,20 @@ const MainBody = () => {
 							navCategory.length &&
 							navCategory.map(({name}) => (
 								<div key={name} className='nav-category-item'>
-									<input
-										type='radio'
-										name='tag'
-										value={name}
-										id={name}
-										checked={keepNote.tag === name ? true : false}
-										onChange={(e) =>
-											setkeepNote((prev) => ({...prev, tag: e.target.value}))
-										}
-									/>
+									<label>
+										<input
+											type='radio'
+											name='tags'
+											value={name}
+											id={name}
+											checked={keepNote.tags === name ? true : false}
+											onChange={(e) =>
+												setkeepNote((prev) => ({...prev, tags: e.target.value}))
+											}
+										/>
 
-									<label>{name}</label>
+										{name}
+									</label>
 								</div>
 							))}
 					</div>
