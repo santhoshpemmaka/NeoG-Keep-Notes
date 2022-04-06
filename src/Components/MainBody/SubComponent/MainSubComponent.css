@@ -9,8 +9,9 @@
     color: var(--primary-text-color);
 }
 .item-notes{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 .item-note-title{
     display: flex;
@@ -23,9 +24,8 @@
     margin: 2rem 2rem 2rem 0;
     display: flex;
     flex-direction: column;
-    width: 30%;
     position: relative;
-    
+    height: 12rem;
 }
 
 .item-title{
@@ -44,10 +44,19 @@
 }
 .item-actions{
     display: flex;
-    align-items: end;
+    align-items: center;
     justify-content: space-between;
+    padding-top: 0.5rem;
 }
+.item-actions-date{
+    font-size: 1.6rem;
+    color: var(--primary-text-color);
+}
+.item-actions-tags{
+    display: flex;
+    align-items: center;
 
+}
 .item-tag{
     font-size: 1.6rem;
     padding: 0.5rem 1rem;

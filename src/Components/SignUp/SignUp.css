@@ -1,0 +1,105 @@
+.signup-container {
+	width: 100%;
+	grid-area: main;
+}
+.signup-component {
+	display: flex;
+	flex-direction: column;
+	max-width: 56rem;
+	background-color: #ffffff;
+	margin: 4rem auto;
+	padding: 3.2rem 4.5rem;
+	box-shadow: 0px 0px 10px 4px rgb(0 0 0 / 5%);
+}
+.signup-header {
+	text-align: center;
+	font-size: 2rem;
+	color: var(--primary-text-color);
+	margin: 1rem 0;
+	padding-bottom: 1.6rem;
+	font-weight: bold;
+	line-height: 2rem;
+}
+.componet-signup {
+	display: flex;
+	align-items: center;
+	margin: 1rem 0;
+}
+.label-signup-name {
+	flex-basis: 15rem;
+	font-size: 1.6rem;
+	color: var(--primary-text-color);
+	font-weight: 500;
+}
+.label-signup-name::after {
+	content: "*";
+	color: var(--primary-color);
+}
+.signup-input {
+	flex-grow: 1;
+	height: 4rem;
+	padding: 0 1rem;
+	border-radius: 0.5rem;
+	border: 2px solid var(--border-color);
+	margin: 0.5rem 0;
+	outline: none;
+	font-size: 1.6rem;
+}
+.signup-input:focus {
+	border: 2px solid var(--primary-color);
+}
+.show-password {
+	position: relative;
+	width: 100%;
+	flex: 1;
+	display: flex;
+}
+.password-icon {
+	position: absolute;
+	font-size: 19px;
+	right: 1rem;
+	cursor: pointer;
+	top: 1.5rem;
+}
+.terms-conditons {
+	display: flex;
+	align-items: center;
+	margin: 1rem 0;
+}
+.terms-checkbox {
+	width: 2rem;
+	height: 3rem;
+	border-radius: 2px solid var(--primary-color);
+}
+.terms-checkbox:checked {
+	background-color: var(--primary-color);
+}
+.terms-conditons label {
+	font-size: 1.4rem;
+	margin-left: 1.5rem;
+}
+.register-btn {
+	width: 100%;
+	height: 4rem;
+	background-color: var(--primary-color);
+	border-radius: 0.5rem;
+	color: var(--complimentary-text-color);
+	font-size: 1.6rem;
+	margin-top: 2rem;
+	letter-spacing: 0.15rem;
+	margin-bottom: 1rem;
+	cursor: pointer;
+	border: 2px solid #e6e6e6;
+}
+.register-btn:hover {
+	background-color: var(--dark-primary-color);
+}
+.sigup-register {
+	font-size: 1.6rem;
+	color: #3e4152;
+}
+.sigup-register > a {
+	font-size: inherit;
+	color: inherit;
+	text-decoration-color: var(--primary-color);
+}

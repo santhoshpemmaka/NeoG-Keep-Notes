@@ -1,9 +1,26 @@
 .header-container{
     margin: 2rem 3rem;
     padding: 1rem;
-    grid-area: heading;
+    justify-content: space-between;
+    display: flex;
+    font-size: 1.6rem;
+    width: 85%;
+}
+.link-style{
+    text-decoration: none;
 }
 .header-name{
     font-size: 2.2rem;
     color: var(--primary-color);
+}
+.header-login{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.8rem;
+    color: var(--primary-text-color);
+    cursor: pointer;
+}
+.header-login i{
+    margin-bottom: 0.5rem;
 }
