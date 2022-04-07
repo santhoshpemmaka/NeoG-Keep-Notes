@@ -5,7 +5,7 @@ import {useAuthentication} from "../../NoteContext/AuthContext/AuthContext";
 
 const Header = () => {
 	const {
-		state: {token},
+		state: {token, useName},
 		logoutUser,
 	} = useAuthentication();
 	return (
@@ -16,7 +16,7 @@ const Header = () => {
 			{token ? (
 				<div className='header-login' onClick={() => logoutUser()}>
 					<i className='fas fa-user'></i>
-					<label>logout</label>
+					<label>{userName}</label>
 				</div>
 			) : (
 				<Link to='/login' className='link-style'>
