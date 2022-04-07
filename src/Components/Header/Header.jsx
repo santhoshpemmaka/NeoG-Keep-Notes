@@ -5,7 +5,7 @@ import {useAuthentication} from "../../NoteContext/AuthContext/AuthContext";
 
 const Header = () => {
 	const {
-		state: {token, useName},
+		state: {token, userName},
 		logoutUser,
 	} = useAuthentication();
 	return (
