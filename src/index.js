@@ -6,14 +6,16 @@ import {NoteProvider} from "./NoteContext/NoteContext";
 import {Mock} from "./Mock";
 import {makeServer} from "./server";
 import {BrowserRouter as Router} from "react-router-dom";
-
+import {AuthenticationProvider} from "./NoteContext/AuthContext/AuthContext";
 makeServer();
 ReactDOM.render(
 	<React.StrictMode>
 		<NoteProvider>
 			<Router>
-				<App />
-				{/* <Mock /> */}
+				<AuthenticationProvider>
+					<App />
+					{/* <Mock /> */}
+				</AuthenticationProvider>
 			</Router>
 		</NoteProvider>
 	</React.StrictMode>,

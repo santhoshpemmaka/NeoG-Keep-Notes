@@ -4,8 +4,14 @@ import "./MainBody.css";
 import {useNote} from "../../NoteContext/NoteContext";
 import {v4 as uuid} from "uuid";
 import {addNoteToServer} from "../../utils/server-request";
+import {useAuthentication} from "../../NoteContext/AuthContext/AuthContext";
+import {useNavigate} from "react-router-dom";
 const MainBody = () => {
 	const {state, dispatch} = useNote();
+	const navigate = useNavigate();
+	const {
+		state: {token},
+	} = useAuthentication();
 	const navCategory = state.category.slice(4, 8);
 	const [keepNote, setkeepNote] = useState({
 		_id: "",
@@ -15,7 +21,6 @@ const MainBody = () => {
 		pinned: false,
 		date: "",
 	});
-	const token = JSON.parse(localStorage.getItem("token"));
 	const btnHandler = () => {
 		addNoteToServer(
 			dispatch,
@@ -85,7 +90,9 @@ const MainBody = () => {
 								</div>
 							))}
 					</div>
-					<button className='nav-add-button' onClick={btnHandler}>
+					<button
+						className='nav-add-button'
+						onClick={() => (token ? btnHandler() : navigate("/login"))}>
 						Add Note
 					</button>
 				</div>

@@ -12,7 +12,7 @@
     "main    main    main     main"
     "footer  footer  footer   footer";
     align-items: flex-start;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .container-body{
