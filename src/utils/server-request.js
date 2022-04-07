@@ -74,3 +74,7 @@ export const addArchiveNoteToServer = async (dispatch, note, token) => {
 		console.log(error);
 	}
 };
+
+export const userloginHandler = async (dispatch, loginDetails) => {
+	console.log(loginDetails);
+};
