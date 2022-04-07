@@ -4,9 +4,12 @@ import {Header, MainPage, Footer, Login, SignUp} from "./Components";
 import {useNote} from "./NoteContext/NoteContext";
 import {getArchiveNoteServer, getNoteServer} from "./utils/server-request";
 import {Routes, Route} from "react-router-dom";
+import {useAuthentication} from "./NoteContext/AuthContext/AuthContext";
 
 function App() {
-	const token = JSON.parse(localStorage.getItem("token"));
+	const {
+		state: {token},
+	} = useAuthentication();
 	const {state, dispatch} = useNote();
 	useEffect(() => {
 		if (token) {

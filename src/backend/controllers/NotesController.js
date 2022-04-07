@@ -14,7 +14,6 @@ import { v4 as uuid } from "uuid";
 
 export const getAllNotesHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
-  console.log("user", user);
   if (!user) {
     new Response(
       404,

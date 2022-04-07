@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const getNoteServer = async (dispatch, token) => {
 	try {
 		const config = {headers: {authorization: token}};

@@ -1,4 +1,5 @@
 import React from "react";
+import {useAuthentication} from "../../../NoteContext/AuthContext/AuthContext";
 import {useNote} from "../../../NoteContext/NoteContext";
 import {
 	addArchiveNoteToServer,
@@ -8,7 +9,9 @@ import "./MainSubComponent.css";
 
 const MainSubComponent = () => {
 	const {state, dispatch} = useNote();
-	const token = JSON.parse(localStorage.getItem("token"));
+	const {
+		state: {token},
+	} = useAuthentication();
 	const filterNotes = state.notes;
 	const StickyNotes =
 		state.sortBy === "Trash"
@@ -24,46 +27,52 @@ const MainSubComponent = () => {
 			? filterNotes.filter((item) => item.pinned === true)
 			: filterNotes.filter((item) => item.tags === state.sortBy);
 	return (
-		<div className='container-note'>
-			{StickyNotes && StickyNotes.length > 0 && (
-				<h3>{state.sortBy ? state.sortBy : "All"} Sticky Notes:</h3>
-			)}
-			<div className='item-notes'>
-				{StickyNotes &&
-					StickyNotes.length > 0 &&
-					StickyNotes.map((note) => (
-						<div key={note._id} className='item-note'>
-							<div className='item-note-title'>
-								<label className='item-title'>{note.title}</label>
-								<i
-									className='fas fa-thumbtack thumbtack-icon'
-									style={{
-										color: `${note.pinned ? "#202135" : "#0000008a"}`,
-										marginRight: "1rem",
-									}}></i>
-							</div>
+		<>
+			{token && (
+				<div className='container-note'>
+					{StickyNotes && StickyNotes.length > 0 && (
+						<h3>{state.sortBy ? state.sortBy : "All"} Sticky Notes:</h3>
+					)}
+					<div className='item-notes'>
+						{StickyNotes &&
+							StickyNotes.length > 0 &&
+							StickyNotes.map((note) => (
+								<div key={note._id} className='item-note'>
+									<div className='item-note-title'>
+										<label className='item-title'>{note.title}</label>
+										<i
+											className='fas fa-thumbtack thumbtack-icon'
+											style={{
+												color: `${note.pinned ? "#202135" : "#0000008a"}`,
+												marginRight: "1rem",
+											}}></i>
+									</div>
 
-							<label className='item-descr'>{note.description}</label>
-							<div className='item-actions'>
-								<div className='item-actions-date'>
-									<label>Created on {note.date}</label>
+									<label className='item-descr'>{note.description}</label>
+									<div className='item-actions'>
+										<div className='item-actions-date'>
+											<label>Created on {note.date}</label>
+										</div>
+										<div className='item-actions-tags'>
+											<i
+												className='fas fa-sticky-note remove-icon'
+												onClick={() =>
+													addArchiveNoteToServer(dispatch, note, token)
+												}></i>
+											<i
+												className='fas fa-trash-alt remove-icon'
+												onClick={() =>
+													deleteFromServer(dispatch, note, token)
+												}></i>
+											<label className='item-tag'>{note.tags}</label>
+										</div>
+									</div>
 								</div>
-								<div className='item-actions-tags'>
-									<i
-										className='fas fa-sticky-note remove-icon'
-										onClick={() =>
-											addArchiveNoteToServer(dispatch, note, token)
-										}></i>
-									<i
-										className='fas fa-trash-alt remove-icon'
-										onClick={() => deleteFromServer(dispatch, note, token)}></i>
-									<label className='item-tag'>{note.tags}</label>
-								</div>
-							</div>
-						</div>
-					))}
-			</div>
-		</div>
+							))}
+					</div>
+				</div>
+			)}
+		</>
 	);
 };
 
