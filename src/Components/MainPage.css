@@ -1,21 +1,5 @@
-.body-component{
-    width: 100%;
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: 
-    "heading heading heading heading"
-    "main    main    main     main"
-    "main    main    main     main"
-    "main    main    main     main"
-    "main    main    main     main"
-    "main    main    main     main"
-    "footer  footer  footer   footer";
-    align-items: flex-start;
-    min-height: 100vh;
-}
-
 .container-body{
     display: flex;
     grid-area: main;
+    min-height: 65vh;
 }

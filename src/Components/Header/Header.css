@@ -1,4 +1,5 @@
 .header-container{
+    grid-area: header;
     margin: 2rem 3rem;
     padding: 1rem;
     justify-content: space-between;

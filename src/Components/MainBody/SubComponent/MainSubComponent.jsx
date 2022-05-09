@@ -6,6 +6,7 @@ import {
 	deleteFromServer,
 } from "../../../utils/server-request";
 import "./MainSubComponent.css";
+import ColorPicker from "./ColorPicker";
 
 const MainSubComponent = () => {
 	const {state, dispatch} = useNote();
@@ -37,7 +38,12 @@ const MainSubComponent = () => {
 						{StickyNotes &&
 							StickyNotes.length > 0 &&
 							StickyNotes.map((note) => (
-								<div key={note._id} className='item-note'>
+								<div
+									key={note._id}
+									className='item-note'
+									style={{
+										backgroundColor: note.noteColor ? note.noteColor : "#FFF",
+									}}>
 									<div className='item-note-title'>
 										<label className='item-title'>{note.title}</label>
 										<i
@@ -50,10 +56,11 @@ const MainSubComponent = () => {
 
 									<label className='item-descr'>{note.description}</label>
 									<div className='item-actions'>
-										<div className='item-actions-date'>
-											<label>Created on {note.date}</label>
+										<div className='item-acitons-left'>
+											<label className='item-tag'>{note.tags}</label>
+											<ColorPicker />
 										</div>
-										<div className='item-actions-tags'>
+										<div className='item-actions-right'>
 											<i
 												className='fas fa-sticky-note remove-icon'
 												onClick={() =>
@@ -64,12 +71,15 @@ const MainSubComponent = () => {
 												onClick={() =>
 													deleteFromServer(dispatch, note, token)
 												}></i>
-											<label className='item-tag'>{note.tags}</label>
+											<label className='item-actions-date'>
+												Created on {note.date}
+											</label>
 										</div>
 									</div>
 								</div>
 							))}
 					</div>
+					<div className='space-4rem'></div>
 				</div>
 			)}
 		</>

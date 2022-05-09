@@ -10,14 +10,23 @@ const Header = () => {
 	} = useAuthentication();
 	return (
 		<div className='header-container'>
-			<Link to='/' className='link-style'>
-				<h1 className='header-name'>Namaste Sticky Notes </h1>
-			</Link>
 			{token ? (
-				<div className='header-login' onClick={() => logoutUser()}>
-					<i className='fas fa-user'></i>
-					<label>{userName}</label>
-				</div>
+				<Link to='/notes' className='link-style'>
+					<h1 className='header-name'>Namaste Sticky Notes </h1>
+				</Link>
+			) : (
+				<Link to='/' className='link-style'>
+					<h1 className='header-name'>Namaste Sticky Notes </h1>
+				</Link>
+			)}
+
+			{token ? (
+				<Link to='/profile' className='link-style'>
+					<div className='header-login'>
+						<i className='fas fa-user'></i>
+						<label>Hi, {userName}</label>
+					</div>
+				</Link>
 			) : (
 				<Link to='/login' className='link-style'>
 					<div className='header-login'>

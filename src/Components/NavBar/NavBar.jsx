@@ -11,7 +11,7 @@ const NavBar = () => {
 			<h3 className='nav-header'>Filter</h3>
 			{NavItems &&
 				NavItems.length &&
-				NavItems.map(({name}) => (
+				NavItems.map((name) => (
 					<div
 						key={name}
 						className='nav-items'
@@ -36,7 +36,7 @@ const NavBar = () => {
 				<i
 					className='fas fa-plus-circle add-tag'
 					onClick={() => {
-						dispatch({type: "ADD_TAG", payload: {name: navTag}});
+						dispatch({type: "ADD_TAG", payload: navTag});
 						setnavTag("");
 					}}></i>
 			</div>

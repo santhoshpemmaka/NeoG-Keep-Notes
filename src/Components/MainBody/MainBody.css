@@ -1,6 +1,18 @@
 .container{
     width: 100%;
 }
+.date-sorting{
+    font-size: 2rem;
+    margin-left: 2rem;
+    display: block;
+    margin: 2rem 0;
+    margin-left: 2rem;
+    font-weight: 500;
+    color: var(--primary-text-color);
+}
+.date-sorting i{
+    margin-right: 1rem;
+}
 .main-container{
     width: 60%;
     margin: 0 auto;
@@ -26,9 +38,11 @@
     font-size: 1.6rem;
     border: none;
     outline: none;
+    background-color: inherit;
 }
 .input-tag-title{
     width: 90%;
+
 }
 .thumbtack-icon{
     font-size: 2rem;
@@ -47,18 +61,15 @@
 }
 .nav-category-items{
     display: flex;
-    padding: 1rem 1rem;
+    align-items: center;
 }
-.nav-category-item{
-    padding: 1rem 0rem;
-    color: var(--primary-text-color);
+.tag{
+    padding: 0.25rem 0.5rem;
     font-size: 1.6rem;
-    padding-right: 3rem;
-    
+    border: 2px solid var(--secondary-text-color);
+    border-radius: 0.625rem;
 }
-.nav-category-item input{
-    margin-right: 0.5rem;
-}
+
 .nav-add-button{
     width: 10rem;
     margin-right: 3rem;
