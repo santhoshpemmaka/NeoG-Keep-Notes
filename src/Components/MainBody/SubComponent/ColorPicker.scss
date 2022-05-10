@@ -5,6 +5,9 @@
     cursor: pointer;
     position: relative;
 }
+.palette-icon {
+    transition: 400ms ease;
+}
 .palette-icon:hover{
     border: 5px solid var(--border-color);
     border-radius: 50%;

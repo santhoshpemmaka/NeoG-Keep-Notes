@@ -19,6 +19,24 @@ const useReducerFun = (state, action) => {
 				...state,
 				archiveNotes: action.payload,
 			};
+		case "SORT_DATE": {
+			return {
+				...state,
+				sortByDate: !state.sortByDate,
+			};
+		}
+
+		case "UPDATE_NOTE": {
+			return {
+				...state,
+				notes: [
+					...state.notes.map((note) =>
+						note._id === action.payload._id ? {...action.payload} : {...note}
+					),
+				],
+			};
+		}
+
 		default:
 			return state;
 	}

@@ -44,16 +44,16 @@ const MainBody = () => {
 
 	return (
 		<div className='container'>
-			<div className='date-sorting'>
+			<div
+				className='date-sorting'
+				onClick={() => dispatch({type: "SORT_DATE"})}>
 				<i className='fas fa-sort-amount-down'></i>
 				<label>Sorting Latest</label>
 			</div>
 			<div
 				className='main-container'
 				style={{
-					backgroundColor: `${
-						keepNote.noteColor ? keepNote.noteColor : "#fffff"
-					}`,
+					backgroundColor: keepNote.noteColor,
 				}}>
 				<div className='input-tags'>
 					<div className='input-tag-container'>

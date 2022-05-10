@@ -11,6 +11,7 @@ const NoteProvider = ({children}) => {
 		category: ["All", "Pinned", "Trash", "Archive", "Home", "Work"],
 		sortBy: null,
 		Pinned: false,
+		sortByDate: false,
 	});
 
 	return (
