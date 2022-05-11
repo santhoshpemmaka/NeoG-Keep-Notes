@@ -7,7 +7,7 @@ import {useEffect} from "react/cjs/react.production.min";
 
 const EditNotes = ({note, seteditNotes}) => {
 	const {state, dispatch} = useNote();
-	const navCategory = state.category.slice(4);
+	const navCategory = state.labels;
 	const [updateNote, setupdateNote] = useState({
 		_id: "",
 		title: "",

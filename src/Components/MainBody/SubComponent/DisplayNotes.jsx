@@ -7,7 +7,6 @@ import {useNote} from "../../../NoteContext/NoteContext";
 import {useAuthentication} from "../../../NoteContext/AuthContext/AuthContext";
 import "./MainSubComponent.css";
 import EditNotes from "./EditNotes";
-import {useEffect} from "react/cjs/react.production.min";
 
 const DisplayNotes = ({note}) => {
 	const [editNotes, seteditNotes] = useState(false);

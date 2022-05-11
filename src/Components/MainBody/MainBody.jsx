@@ -13,7 +13,7 @@ const MainBody = () => {
 	const {
 		state: {token},
 	} = useAuthentication();
-	const navCategory = state.category.slice(4);
+	const navCategory = state.labels;
 	const [keepNote, setkeepNote] = useState({
 		_id: "",
 		title: "",
@@ -47,8 +47,14 @@ const MainBody = () => {
 			<div
 				className='date-sorting'
 				onClick={() => dispatch({type: "SORT_DATE"})}>
-				<i className='fas fa-sort-amount-down'></i>
-				<label>Sorting Latest</label>
+				{state.sortByDate ? (
+					<label>Clear Sorting</label>
+				) : (
+					<>
+						<i className='fas fa-sort-amount-down'></i>
+						<label>Sorting Latest</label>
+					</>
+				)}
 			</div>
 			<div
 				className='main-container'

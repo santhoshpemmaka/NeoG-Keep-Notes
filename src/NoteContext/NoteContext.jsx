@@ -8,8 +8,9 @@ const NoteProvider = ({children}) => {
 		notes: [],
 		deleteNotes: [],
 		archiveNotes: [],
-		category: ["All", "Pinned", "Trash", "Archive", "Home", "Work"],
-		sortBy: null,
+		labels: ["Home", "Work"],
+		categoryFilter: [],
+		labelFilter: [],
 		Pinned: false,
 		sortByDate: false,
 	});
