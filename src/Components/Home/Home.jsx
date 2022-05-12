@@ -8,7 +8,7 @@ const Home = () => {
 			<div className='home-component grid-layout'>
 				<div className='home-component-headings'>
 					<h2 className='home-page-header'>
-						Namaster<label>Note</label>
+						Namaste<label>Note</label>
 					</h2>
 					<h3 className='home-page-subheading1'>Meet Your Modern</h3>
 					<h3 className='home-page-subheading2'>Note Taking App</h3>
