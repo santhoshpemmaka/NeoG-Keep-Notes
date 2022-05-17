@@ -1,0 +1,85 @@
+.home-container {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: #eff2f5;
+	.home-component {
+		max-width: 1024px;
+		margin: 0 auto;
+		background-color: var(--complimentary-text-color);
+		border-radius: 0.625rem;
+		padding: 2rem 3rem;
+		min-height: 75vh;
+		box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+		margin-top: 9rem;
+		.home-component-headings {
+			padding-top: 5rem;
+			padding-left: 2rem;
+			.home-page-header {
+				padding: 3rem 0;
+				font-weight: 500;
+				color: var(--primary-color);
+				font-size: 5rem;
+				label {
+					color: var(--primary-text-color);
+					margin-left: 1rem;
+				}
+			}
+			.home-page-subheading1 {
+				font-size: 3rem;
+				color: var(--primary-text-color);
+				font-weight: 500;
+				padding-top: 2rem;
+			}
+			.home-page-subheading2 {
+				padding-top: 1rem;
+				font-size: 3rem;
+				color: var(--primary-color);
+				padding-bottom: 3rem;
+			}
+			.home-page-description {
+				line-height: 3rem;
+				padding: 2rem 0;
+				display: block;
+				font-size: 2rem;
+				color: var(--primary-text-color);
+				letter-spacing: 0.1rem;
+			}
+            .no-list-link{
+                text-decoration: none;
+            }
+            .home-page-btn{
+                display: block;
+                padding: 1.5rem 2rem;
+                font-size: 1.8rem;
+                margin: 1rem 0;
+                background-color: var(--primary-color);
+                color: var(--complimentary-text-color);
+                font-weight: 500;
+                border: 2px solid var(--border-color);
+                border-radius: 0.65rem;
+                cursor: pointer;
+            }
+            .home-page-login{
+                font-size: 2rem;
+                color: var(--primary-text-color);
+                padding-top: 1rem;
+                display: inline-block;    
+            }
+		}
+        .home-page-response{
+            padding: 5rem 0;
+            img{
+                width: 100%;
+                height: 60vh;
+            }
+        }
+	}
+	.grid-layout {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		gap: 2rem;
+	}
+}

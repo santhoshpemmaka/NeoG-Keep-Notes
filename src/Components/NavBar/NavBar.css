@@ -1,8 +1,29 @@
 .nav-conatiner{
-    width: 20%;
+    width: 23%;
     display: flex;
     flex-direction: column;
     align-items:flex-start;
+    border-right: 5px solid var(--border-color);
+}
+
+.nav-conatiner-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+.nav-conatiner-label{
+    color: var(--primary-text-color);
+    font-size: 2rem;
+}
+.nav-conatiner-label1{
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+    border-bottom: 2px solid var(--primary-color);
+    cursor: pointer;
 }
 .nav-header{
     font-size: 2rem;
@@ -23,6 +44,12 @@
 .nav-items-label{
     width: 100%;
     cursor: pointer;
+    font-size: 1.8rem;
+    display: block;
+}
+
+.nav-items-label input{
+    margin-right: 1rem;
 }
 .nav-add-tag{
     display: flex;
