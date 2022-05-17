@@ -16,7 +16,7 @@ const MainSubComponent = () => {
 		state.categoryFilter.length !== 0
 			? getFilterCategory(filterNotesDate, state)
 			: getFilterLabel(filterNotesDate, state);
-	console.log("notes", StickyNotes);
+
 	return (
 		<>
 			{token && (
