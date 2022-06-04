@@ -44,6 +44,7 @@ const MainBody = () => {
 
 	return (
 		<div className='container'>
+			<label className='show-on-mobile-heading'>Namaste Note</label>
 			<div
 				className='date-sorting'
 				onClick={() => dispatch({type: "SORT_DATE"})}>

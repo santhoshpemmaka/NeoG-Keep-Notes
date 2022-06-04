@@ -100,7 +100,7 @@ const EditNotes = ({note, seteditNotes}) => {
 							onChangeColorHandler={onChangeColorHandler}
 						/>
 					</div>
-					<div>
+					<div className='edit-note-btns'>
 						<button className='nav-add-button' onClick={() => savedHandler()}>
 							saved
 						</button>
