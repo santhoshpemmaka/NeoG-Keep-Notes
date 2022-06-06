@@ -1,6 +1,9 @@
 .container {
 	width: 100%;
 }
+.show-on-mobile-heading {
+	display: none;
+}
 .date-sorting {
 	font-size: 2rem;
 	margin-left: 2rem;
@@ -85,4 +88,47 @@
 	border-radius: 0.625rem;
 	font-size: 1.6rem;
 	cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+	.container {
+		height: 100vh;
+		overflow-y: auto;
+	}
+	.container::-webkit-scrollbar {
+		display: none;
+	}
+	.show-on-mobile-heading {
+		font-size: 2.2rem;
+		display: block;
+		text-align: center;
+		color: var(--primary-color);
+		font-weight: bold;
+		padding: 1rem 0;
+	}
+	.date-sorting {
+		font-size: 1.6rem;
+		margin: 1rem 1rem;
+		margin-bottom: 2rem;
+	}
+	.main-container {
+		width: 90%;
+		height: 16rem;
+	}
+	.input-tags {
+		margin: 1rem 0;
+	}
+	.container-note {
+		width: 90%;
+	}
+	.item-note {
+		width: 95%;
+		padding: 1rem;
+	}
+	.item-actions-right {
+		font-size: 1.4rem;
+	}
+	.remove-icon {
+		font-size: 2rem;
+	}
 }
