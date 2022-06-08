@@ -65,19 +65,18 @@
 	margin-bottom: 2rem;
 	cursor: pointer;
 }
-.test-credentails-btn{
-    background-color: var(--complimentary-text-color);
-    border: 1px solid var(--primary-color);
+.test-credentails-btn {
+	background-color: var(--complimentary-text-color);
+	border: 1px solid var(--primary-color);
 	color: var(--primary-color);
 	font-size: 1.6rem;
 	margin: 1rem 0;
 	letter-spacing: 0.15rem;
 	cursor: pointer;
 }
-.test-credentails-btn:hover{
-    background-color: var(--primary-color);
-    color: var(--complimentary-text-color)
-    
+.test-credentails-btn:hover {
+	background-color: var(--primary-color);
+	color: var(--complimentary-text-color);
 }
 .login-btn:hover {
 	background-color: var(--dark-primary-color);
@@ -89,4 +88,10 @@
 }
 .login-text > a {
 	color: inherit;
+}
+
+@media only screen and (max-width: 768px) {
+	.login-component {
+		margin: 2rem auto;
+	}
 }

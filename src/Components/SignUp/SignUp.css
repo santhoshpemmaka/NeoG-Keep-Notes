@@ -103,3 +103,21 @@
 	color: inherit;
 	text-decoration-color: var(--primary-color);
 }
+
+@media only screen and (max-width: 768px) {
+	.signup-component {
+		padding: 1rem 2rem;
+		margin: 2rem 1rem;
+		margin-top: 0.5rem;
+	}
+	.signup-header {
+		margin: 0;
+		padding-bottom: 1rem;
+	}
+	.spacer-3rem {
+		display: none;
+	}
+	.register-btn {
+		margin-top: 0;
+	}
+}

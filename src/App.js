@@ -1,6 +1,14 @@
 import {useEffect} from "react";
 import "./App.css";
-import {Header, MainPage, Footer, Login, SignUp} from "./Components";
+import {
+	Header,
+	MainPage,
+	Footer,
+	Login,
+	SignUp,
+	Home,
+	Profile,
+} from "./Components";
 import {useNote} from "./NoteContext/NoteContext";
 import {getArchiveNoteServer, getNoteServer} from "./utils/server-request";
 import {Routes, Route} from "react-router-dom";
@@ -21,9 +29,11 @@ function App() {
 		<div className='App'>
 			<Header />
 			<Routes>
-				<Route path='/' element={<MainPage />} />
+				<Route path='/' element={<Home />} />
+				<Route path='/notes' element={<MainPage />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<SignUp />} />
+				<Route path='/profile' element={<Profile />} />
 			</Routes>
 			<Footer />
 		</div>

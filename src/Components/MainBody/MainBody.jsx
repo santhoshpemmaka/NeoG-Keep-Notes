@@ -6,20 +6,22 @@ import {v4 as uuid} from "uuid";
 import {addNoteToServer} from "../../utils/server-request";
 import {useAuthentication} from "../../NoteContext/AuthContext/AuthContext";
 import {useNavigate} from "react-router-dom";
+import ColorPicker from "./SubComponent/ColorPicker";
 const MainBody = () => {
 	const {state, dispatch} = useNote();
 	const navigate = useNavigate();
 	const {
 		state: {token},
 	} = useAuthentication();
-	const navCategory = state.category.slice(4, 8);
+	const navCategory = state.labels;
 	const [keepNote, setkeepNote] = useState({
 		_id: "",
 		title: "",
 		description: "",
-		tags: "",
+		tags: "Home",
 		pinned: false,
 		date: "",
+		noteColor: "",
 	});
 	const btnHandler = () => {
 		addNoteToServer(
@@ -30,13 +32,36 @@ const MainBody = () => {
 		setkeepNote({
 			title: "",
 			description: "",
-			tags: "",
+			tags: "Home",
 			pinned: false,
+			noteColor: "",
 		});
 	};
+
+	const onChangeColorHandler = (color) => {
+		setkeepNote({...keepNote, noteColor: color});
+	};
+
 	return (
 		<div className='container'>
-			<div className='main-container'>
+			<label className='show-on-mobile-heading'>Namaste Note</label>
+			<div
+				className='date-sorting'
+				onClick={() => dispatch({type: "SORT_DATE"})}>
+				{state.sortByDate ? (
+					<label>Clear Sorting</label>
+				) : (
+					<>
+						<i className='fas fa-sort-amount-down'></i>
+						<label>Sorting Latest</label>
+					</>
+				)}
+			</div>
+			<div
+				className='main-container'
+				style={{
+					backgroundColor: keepNote.noteColor,
+				}}>
 				<div className='input-tags'>
 					<div className='input-tag-container'>
 						<input
@@ -69,30 +94,27 @@ const MainBody = () => {
 				</div>
 				<div className='nav-category'>
 					<div className='nav-category-items'>
-						{navCategory &&
-							navCategory.length &&
-							navCategory.map(({name}) => (
-								<div key={name} className='nav-category-item'>
-									<label>
-										<input
-											type='radio'
-											name='tags'
-											value={name}
-											id={name}
-											checked={keepNote.tags === name ? true : false}
-											onChange={(e) =>
-												setkeepNote((prev) => ({...prev, tags: e.target.value}))
-											}
-										/>
-
+						<select
+							className='tag'
+							onChange={(e) =>
+								setkeepNote((prev) => ({...prev, tags: e.target.value}))
+							}
+							value={keepNote.tags}
+							name='tagsSelector'>
+							{navCategory.map((name) => {
+								return (
+									<option key={name} value={name}>
 										{name}
-									</label>
-								</div>
-							))}
+									</option>
+								);
+							})}
+						</select>
+						<ColorPicker
+							noteColor={keepNote.noteColor}
+							onChangeColorHandler={onChangeColorHandler}
+						/>
 					</div>
-					<button
-						className='nav-add-button'
-						onClick={() => (token ? btnHandler() : navigate("/login"))}>
+					<button className='nav-add-button' onClick={() => btnHandler()}>
 						Add Note
 					</button>
 				</div>
