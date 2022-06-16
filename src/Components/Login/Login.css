@@ -33,6 +33,12 @@
 .login-input:focus {
 	border: 2px solid var(--primary-color);
 }
+.validate-data {
+	font-size: 1.3rem;
+	padding: 0.5rem;
+	color: red;
+	margin: 0.5rem 0;
+}
 .login-password {
 	position: relative;
 }

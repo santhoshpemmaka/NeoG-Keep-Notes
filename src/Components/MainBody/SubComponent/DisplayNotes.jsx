@@ -8,7 +8,7 @@ import {useAuthentication} from "../../../NoteContext/AuthContext/AuthContext";
 import "./MainSubComponent.css";
 import EditNotes from "./EditNotes";
 
-const DisplayNotes = ({note}) => {
+const DisplayNotes = ({note, categoryFilter}) => {
 	const [editNotes, seteditNotes] = useState(false);
 	const [colorNote, setcolorNote] = useState();
 	const [updateNote, setupdateNote] = useState({
@@ -47,15 +47,23 @@ const DisplayNotes = ({note}) => {
 				</div>
 				<div className='item-actions-right'>
 					<label className='item-actions-date'>Created on {note.date}</label>
-					<i
-						className='fas fa-sticky-note remove-icon'
-						onClick={() => addArchiveNoteToServer(dispatch, note, token)}></i>
-					<i
-						className='fas fa-trash-alt remove-icon'
-						onClick={() => deleteFromServer(dispatch, note, token)}></i>
-					<i
-						className='fas fa-edit remove-icon'
-						onClick={() => seteditNotes((prev) => !prev)}></i>
+					{categoryFilter.length === 0 ? (
+						<>
+							<i
+								className='fas fa-sticky-note remove-icon'
+								onClick={() =>
+									addArchiveNoteToServer(dispatch, note, token)
+								}></i>
+							<i
+								className='fas fa-trash-alt remove-icon'
+								onClick={() => deleteFromServer(dispatch, note, token)}></i>
+							<i
+								className='fas fa-edit remove-icon'
+								onClick={() => seteditNotes((prev) => !prev)}></i>
+						</>
+					) : (
+						""
+					)}
 				</div>
 			</div>
 			{editNotes && <EditNotes note={note} seteditNotes={seteditNotes} />}

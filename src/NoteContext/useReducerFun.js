@@ -14,7 +14,10 @@ const useReducerFun = (state, action) => {
 		case "ADD_ARCHIVE":
 			return {
 				...state,
-				archiveNotes: action.payload,
+				archiveNotes: action.payload.res,
+				notes: [...state.notes].filter(
+					(prevNote) => prevNote._id !== action.payload.note._id
+				),
 			};
 		case "SORT_DATE": {
 			return {
@@ -26,28 +29,26 @@ const useReducerFun = (state, action) => {
 		case "UPDATE_NOTE": {
 			return {
 				...state,
-				notes: [
-					...state.notes.map((note) =>
-						note._id === action.payload._id ? {...action.payload} : {...note}
-					),
-				],
+				notes: action.payload,
 			};
 		}
 
 		case "CATEGORY_FILTER": {
-			if(state.categoryFilter.includes(action.payload)){
+			if (state.categoryFilter.includes(action.payload)) {
 				return {
 					...state,
-					categoryFilter: [...state.categoryFilter.filter((category) => category !== action.payload)]
-				}
-			}
-			else{
-				return{
+					categoryFilter: [
+						...state.categoryFilter.filter(
+							(category) => category !== action.payload
+						),
+					],
+				};
+			} else {
+				return {
 					...state,
-					categoryFilter: [action.payload]
-				}
+					categoryFilter: [action.payload],
+				};
 			}
-			
 		}
 		case "LABEL_FILTER": {
 			if (state.labelFilter.includes(action.payload)) {
@@ -66,11 +67,11 @@ const useReducerFun = (state, action) => {
 		}
 
 		case "CLEAR_FILTER": {
-			return{
+			return {
 				...state,
 				labelFilter: [],
-				categoryFilter: []
-			}
+				categoryFilter: [],
+			};
 		}
 		default:
 			return state;

@@ -65,9 +65,25 @@ export const addArchiveNoteToServer = async (dispatch, note, token) => {
 			config
 		);
 		if (response.status === 200 || response.status === 201) {
-			dispatch({type: "ADD_ARCHIVE", payload: response.data?.archives});
+			dispatch({
+				type: "ADD_ARCHIVE",
+				payload: {res: response.data?.archives, note: note},
+			});
 		} else {
 			throw new Error("Failed add archive note");
+		}
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const updateNoteServer = async (dispatch, note, token) => {
+	try {
+		const id = note._id;
+		const config = {headers: {accept: "*/*", authorization: token}};
+		const response = await axios.post(`/api/notes/${id}`, {note: note}, config);
+		if (response.status === 200 || response.status === 201) {
+			dispatch({type: "UPDATE_NOTE", payload: response.data?.notes});
 		}
 	} catch (error) {
 		console.log(error);
