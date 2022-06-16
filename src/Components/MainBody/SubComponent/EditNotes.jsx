@@ -2,8 +2,10 @@ import React, {useState} from "react";
 import ColorPicker from "./ColorPicker";
 import "./EditNotes.css";
 import "../MainBody.css";
+import {updateNoteServer} from "../../../utils/server-request";
 import {useNote} from "../../../NoteContext/NoteContext";
 import {useEffect} from "react/cjs/react.production.min";
+import {useAuthentication} from "../../../NoteContext/AuthContext/AuthContext";
 
 const EditNotes = ({note, seteditNotes}) => {
 	const {state, dispatch} = useNote();
@@ -17,6 +19,9 @@ const EditNotes = ({note, seteditNotes}) => {
 		date: "",
 		noteColor: "",
 	});
+	const {
+		state: {token},
+	} = useAuthentication();
 	const {_id, title, description, tags, pinned, date, noteColor} = note;
 
 	const onChangeColorHandler = (color) => {
@@ -36,7 +41,7 @@ const EditNotes = ({note, seteditNotes}) => {
 	};
 
 	const closeHandler = () => {
-		dispatch({type: "UPDATE_NOTE", payload: updateNote});
+		updateNoteServer(dispatch, updateNote, token);
 		seteditNotes();
 	};
 
@@ -46,7 +51,11 @@ const EditNotes = ({note, seteditNotes}) => {
 				className='main-container'
 				style={{
 					backgroundColor: `${
-						updateNote.noteColor ? updateNote.noteColor : note.noteColor
+						updateNote.noteColor
+							? updateNote.noteColor
+							: note.noteColor
+							? noteColor
+							: "white"
 					}`,
 				}}>
 				<div className='input-tags'>
