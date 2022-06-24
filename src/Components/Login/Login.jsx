@@ -3,6 +3,8 @@ import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import {useAuthentication} from "../../NoteContext/AuthContext/AuthContext";
 import {Navigate} from "react-router-dom";
+import validator from "validator";
+import {ThreeDots} from "react-loader-spinner";
 import "./Login.css";
 
 const Login = () => {
@@ -13,21 +15,15 @@ const Login = () => {
 		password: "",
 		shownPassword: false,
 	});
-	const [validationFlag, setvalidationFlag] = useState(false);
-
+	const [loginMessage, setloginMessage] = useState(false);
+	const [showLoader, setshowLoader] = useState(false);
 	if (state?.token) {
 		setTimeout(() => {
 			navigation("/notes");
 		}, 1000);
 	}
 	const btnHandler = () => {
-		if (
-			loginDetails.username.length === 0 ||
-			loginDetails.password.length === 0
-		) {
-			setvalidationFlag((prev) => !prev);
-		}
-		setloginDetails({username: "", password: ""});
+		setloginMessage((prev) => !prev);
 	};
 	const iconHandler = () => {
 		setloginDetails({
@@ -50,6 +46,7 @@ const Login = () => {
 						email: response?.data?.foundUser?.email,
 					})
 				);
+				setshowLoader((prev) => !prev);
 				dispatch({
 					type: "LOGIN_USER",
 					payload: {
@@ -89,7 +86,13 @@ const Login = () => {
 							setloginDetails({...loginDetails, username: e.target.value})
 						}
 					/>
-					{loginDetails.username.length === 0 && validationFlag && (
+					{loginDetails.username.length > 1 &&
+					validator.isEmail(loginDetails.username) === false ? (
+						<label className='validate-data'>Please enter valid email</label>
+					) : (
+						""
+					)}
+					{loginDetails.username.length === 0 && loginMessage && (
 						<label className='validate-data'>
 							* Email input field is required
 						</label>
@@ -111,7 +114,7 @@ const Login = () => {
 						) : (
 							<i onClick={iconHandler} className='fas fa-eye password-icon'></i>
 						)}
-						{loginDetails.password.length === 0 && validationFlag && (
+						{loginDetails.password.length === 0 && loginMessage && (
 							<label className='validate-data'>
 								* Password input field is required
 							</label>
@@ -122,6 +125,13 @@ const Login = () => {
 						onClick={testHandler}>
 						Login With Test Crendentails
 					</button>
+					{loginDetails.username !== "" &&
+						loginDetails.password.length > 3 &&
+						loginMessage && (
+							<label className='login-message'>
+								login failed. try with test crendentails
+							</label>
+						)}
 					<button
 						className='login-input login-btn'
 						onClick={() => btnHandler()}>
@@ -132,6 +142,11 @@ const Login = () => {
 					</label>
 				</div>
 			</div>
+			{showLoader && (
+				<div className='loader-dots'>
+					<ThreeDots color='#ff3f6c' height={100} width={100} timeout={5000} />
+				</div>
+			)}
 		</div>
 	);
 };

@@ -61,22 +61,11 @@
 	cursor: pointer;
 	top: 1.5rem;
 }
-.terms-conditons {
-	display: flex;
-	align-items: center;
-	margin: 1rem 0;
-}
-.terms-checkbox {
-	width: 2rem;
-	height: 3rem;
-	border-radius: 2px solid var(--primary-color);
-}
-.terms-checkbox:checked {
-	background-color: var(--primary-color);
-}
-.terms-conditons label {
-	font-size: 1.4rem;
-	margin-left: 1.5rem;
+.validate-message {
+	display: block;
+	font-size: 1.3rem;
+	text-align: center;
+	color: red;
 }
 .register-btn {
 	width: 100%;
@@ -102,6 +91,13 @@
 	font-size: inherit;
 	color: inherit;
 	text-decoration-color: var(--primary-color);
+}
+
+.loader-dots {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+	transform: translate(50%, 50%);
 }
 
 @media only screen and (max-width: 768px) {
