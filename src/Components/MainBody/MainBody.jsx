@@ -45,7 +45,7 @@ const MainBody = () => {
 	return (
 		<div className='container'>
 			<label className='show-on-mobile-heading'>Namaste Note</label>
-			<div
+			{/* <div
 				className='date-sorting'
 				onClick={() => dispatch({type: "SORT_DATE"})}>
 				{state.sortByDate ? (
@@ -56,7 +56,7 @@ const MainBody = () => {
 						<label>Sorting Latest</label>
 					</>
 				)}
-			</div>
+			</div> */}
 			<div
 				className='main-container'
 				style={{
