@@ -16,7 +16,6 @@ const MainSubComponent = () => {
 		state.categoryFilter.length !== 0
 			? getFilterCategory(filterNotesDate, state)
 			: getFilterLabel(filterNotesDate, state);
-
 	return (
 		<>
 			{token && (
@@ -31,7 +30,13 @@ const MainSubComponent = () => {
 						{StickyNotes && StickyNotes.length > 0 ? (
 							StickyNotes.map(
 								(note) =>
-									note.title && <DisplayNotes note={note} key={note._id} />
+									note.title && (
+										<DisplayNotes
+											note={note}
+											categoryFilter={state?.categoryFilter}
+											key={note._id}
+										/>
+									)
 							)
 						) : (
 							<h1 className='empty-label'>

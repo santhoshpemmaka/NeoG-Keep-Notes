@@ -33,6 +33,12 @@
 .login-input:focus {
 	border: 2px solid var(--primary-color);
 }
+.validate-data {
+	font-size: 1.3rem;
+	padding: 0.5rem;
+	color: red;
+	margin: 0.5rem 0;
+}
 .login-password {
 	position: relative;
 }
@@ -54,6 +60,13 @@
 }
 .forgot-alink {
 	text-decoration: none;
+}
+.login-message {
+	font-size: 1.4rem;
+	padding: 0.5rem 0;
+	display: block;
+	text-align: center;
+	color: red;
 }
 .login-btn {
 	background-color: var(--primary-color);
@@ -88,6 +101,13 @@
 }
 .login-text > a {
 	color: inherit;
+}
+
+.loader-dots {
+	position: absolute;
+	top: 20%;
+	left: 40%;
+	transform: translate(50%, 50%);
 }
 
 @media only screen and (max-width: 768px) {
